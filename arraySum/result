@@ -1,0 +1,11 @@
+Result:
+Array size: 10000
+====
+Program with OpenCL framework(main.c)
+Total execution time:
+OpenCL execution time:
+====
+Simple program(noOpenCLarraySum.c)
+Total execution time:
+OpenCL execution time:
+====
