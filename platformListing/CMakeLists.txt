@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 2.6)
+project(platformListing)
+set( CMAKE_MODULE_PATH ${platformListing_SOURCE_DIR}/cmake)
+message("CMake module path: ${CMAKE_MODULE_PATH}\n")
+find_package(OPENCL)
+include_directories(${CMAKE_MODULE_PATH})
+get_directory_property(includes include_directories)
+add_definitions(-DCL_SOURCE_DIR="${CMAKE_MODULE_PATH}")
+add_definitions(-g)
+add_executable(platformListing platformListing.c)
+target_link_libraries(platformListing
+   ${OPENCL_LIBRARIES})

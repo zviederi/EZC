@@ -1,0 +1,2 @@
+gcc -c platformListing.c -o platformListing.o
+gcc platformListing.o -o platformListing -l OpenCL
