@@ -1,11 +1,11 @@
 Result:
-Array size: 10000
+Array size: 500
 ====
 Program with OpenCL framework(main.c)
-Total execution time:
-OpenCL execution time:
+Total execution time: 3.250000
+OpenCL execution time: 0.220000
 ====
 Simple program(noOpenCLarraySum.c)
-Total execution time:
-OpenCL execution time:
+Total execution time: 2.770000 
+Calculation execution time: 0.010000
 ====
