@@ -1,11 +1,34 @@
 Result:
+Calculated: (a[i+j] *2*4.5) + (b[i+j]/a[i+j]);
 Array size: 500
 ====
 Program with OpenCL framework(main.c)
-Total execution time: 3.250000
-OpenCL execution time: 0.220000
+Total execution time: 4.170000
+OpenCL execution time: 0.080000
 ====
 Simple program(noOpenCLarraySum.c)
-Total execution time: 2.770000 
+Total execution time: 3.440000 
 Calculation execution time: 0.010000
+====
+
+Array size: 100
+====
+Program with OpenCL framework(main.c)
+Total execution time: 0.060000
+OpenCL execution time: 0.120000
+====
+Simple program(noOpenCLarraySum.c)
+Total execution time: 0.130000 
+Calculation execution time: 0.000000
+====
+
+Array size: 1000
+====
+Program with OpenCL framework(main.c)
+Total execution time: 16.290000
+OpenCL execution time: 0.120000
+====
+Simple program(noOpenCLarraySum.c)
+Total execution time: 13.390000     
+Calculation execution time: 0.020000
 ====

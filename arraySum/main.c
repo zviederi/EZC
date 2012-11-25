@@ -11,7 +11,7 @@ int main()
   /* starts pirms datu inicializācijas */        
   start = clock();
       
-  int size_array = 500;
+  int size_array = 1000;
   mainCL(size_array);
 
   /* pievifiksējam prgrammas izpildes beigu laiku */

@@ -79,4 +79,16 @@ const char* oclErrorString(cl_int error)
     return (index >= 0 && index < errorCount) ? errorString[index] : "";
 
 }
+int roundWorkSizeUp(int groupSize, int globalSize)
+{
+    int remainder = globalSize % groupSize;
+    if (remainder == 0)
+    {
+        return globalSize;
+    }
+    else
+    {
+        return globalSize + groupSize - remainder;
+    }
+}
 

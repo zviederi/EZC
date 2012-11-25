@@ -2,6 +2,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <math.h>
+
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 
 int mainCL(int size_arr)
 {
@@ -31,8 +36,7 @@ int mainCL(int size_arr)
      for(i=0;i<size_arr;i++){
          for (j=0; j < size_arr; j++)
           {
-              C[(i*size_arr)+j] = (A[(i*size_arr)+j]*2*4.5) + (B[(i*size_arr)+j]/A[(i*size_arr)+j]);
-                              
+              C[(i*size_arr)+j] = (A[(i*size_arr)+j]*2*4.5) + (B[(i*size_arr)+j]/A[(i*size_arr)+j]);                           
           }
       }
      end_l = clock();
@@ -60,7 +64,7 @@ int main()
      /* starts pirms datu inicializācijas */  
      start = clock();
       
-     int size_array = 500;
+     int size_array = 1000;
      mainCL(size_array);
 
 
