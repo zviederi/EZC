@@ -79,9 +79,10 @@ const char* oclErrorString(cl_int error)
     return (index >= 0 && index < errorCount) ? errorString[index] : "";
 
 }
-int roundWorkSizeUp(int groupSize, int globalSize)
+int roundWorkSizeUp(int groupSize, int globalSize)//512, 1000
 {
     int remainder = globalSize % groupSize;
+    printf("%i\n", remainder);
     if (remainder == 0)
     {
         return globalSize;
@@ -90,5 +91,9 @@ int roundWorkSizeUp(int groupSize, int globalSize)
     {
         return globalSize + groupSize - remainder;
     }
+}
+void pfn_notify(const char *errinfo, const void *private_info, size_t cb, void *user_data)
+{
+   fprintf(stderr, "%s\n", errinfo);
 }
 

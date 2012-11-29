@@ -36,7 +36,7 @@ int mainCL(int size_arr)
      for(i=0;i<size_arr;i++){
          for (j=0; j < size_arr; j++)
           {
-              C[(i*size_arr)+j] = (A[(i*size_arr)+j]*2*4.5) + (B[(i*size_arr)+j]/A[(i*size_arr)+j]);                           
+              C[(i*size_arr)+j] = (A[(i*size_arr)+j])*pow(sin(-M_PI),cos(M_PI)) + (pow(sin(-M_PI),cos(M_PI)) * B[(i*size_arr)+j]);                           
           }
       }
      end_l = clock();
@@ -52,27 +52,33 @@ int mainCL(int size_arr)
     }
       gpu_time_used = ((double) (end_l - start_l)) / CLOCKS_PER_SEC;
      printf("== Calculation execution time ==\n");
-     printf("%f \n",gpu_time_used);     
+     printf("%.2f sec.\n",gpu_time_used);     
 }
 
-int main()
+int main(int argc, char *argv[])
 {
-     /* Piefiksējam izpildes laiku */
-     clock_t start, end;
-     double gpu_time_used;
+    /* Piefiksējam izpildes laiku */
+    clock_t start, end;
+    double gpu_time_used;
          
-     /* starts pirms datu inicializācijas */  
-     start = clock();
+    /* starts pirms datu inicializācijas */  
+    start = clock();
       
-     int size_array = 1000;
-     mainCL(size_array);
-
+    char * pEnd;
+    int size_array = strtol(argv[1], &pEnd,10);
+    if (size_array <= 0)
+      {
+        printf("== No integer type or integer is negative ==\n", size_array);
+        return 0;
+      }
+    else
+      mainCL(size_array);
 
      /* pievifiksējam prgrammas izpildes beigu laiku */
      end = clock();
      gpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
      printf("== Total execution time ==\n");
-     printf("%f \n",gpu_time_used);
+     printf("%.2f sec.\n",gpu_time_used);
    
 }
 

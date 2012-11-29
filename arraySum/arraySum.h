@@ -97,6 +97,16 @@ cl_context createContext()
       
   }
   context = clCreateContext(NULL,1,&device_id,NULL,NULL,&error);
+  if (error == CL_OUT_OF_HOST_MEMORY)
+  {
+    context = createContext();
+  }
+  else if (error != CL_SUCCESS)
+  {
+    printf(" Error at clCreateContext! \n");
+    printf("%s\n", oclErrorString(error));
+    return NULL;
+  }
   return context;
 }
 
@@ -182,10 +192,8 @@ cl_program createProgram(cl_context context, cl_device_id device_id, const char*
   error = clBuildProgram(program,1,&device_id,NULL,NULL,NULL);
   if (error != CL_SUCCESS)
   { 
-    char buildLog[16384];
-    clGetProgramBuildInfo(program, device_id, CL_PROGRAM_BUILD_LOG, sizeof(buildLog), buildLog, NULL);
-    printf(" Error in programm \n");
-    printf("%s", buildLog);
+    printf(" Failed to create clBuildProgram. \n");
+    printf("%s\n", oclErrorString(error));
     return NULL;
   }
   free(source_str);
@@ -325,8 +333,14 @@ int mainCL(int size_arr)
       return EXIT_FAILURE;
     }
 
-    size_t local_item_size = 4;
+    /* Iegūstam maksimālo darba grupu lielumu */
+    size_t max_work_goup;
+    clGetDeviceInfo(device_id, CL_DEVICE_MAX_WORK_GROUP_SIZE, sizeof(size_t), &max_work_goup, NULL);
+    //printf(" Max workgroup size: %u \n", max_work_goup);
+    size_t local_item_size = max_work_goup;
     size_t global_item_size = roundWorkSizeUp(local_item_size, size_arr);
+    //size_t global_item_size = size_arr;
+    //size_t local_item_size = 4;
     
     /* Paralēli izpildām OpenCL kodola datus */
     error = clEnqueueNDRangeKernel(command_queue,kernel,1,NULL,&global_item_size,&local_item_size,0,NULL,NULL);
@@ -336,13 +350,20 @@ int mainCL(int size_arr)
       printf("%s\n", oclErrorString(error));
       return EXIT_FAILURE;
     }
+    error = clEnqueueBarrier(command_queue);
+    if (error != CL_SUCCESS)
+    { 
+      printf(" Error at clEnqueueBarrier! \n");
+      printf("%s\n", oclErrorString(error));
+      return EXIT_FAILURE;
+    }
     
 
     /* Pārnesam rezultātu uz hostu */
     error = clEnqueueReadBuffer(command_queue,memObjects[2],CL_TRUE,0,size_arr*size_arr*sizeof(float),C,0,NULL,NULL);
     if (error != CL_SUCCESS)
     { 
-      printf(" Error at clEnqueueReadBuffer! \n");
+      printf(" Error at line: %d (clEnqueueReadBuffer)! \n",__LINE__);
       printf("%s\n", oclErrorString(error));
       return EXIT_FAILURE;
     }
@@ -362,7 +383,7 @@ int mainCL(int size_arr)
     /* Izvadām OpenCL izpildes laiku */
     gpu_time_used = ((double) (end_l - start_l)) / CLOCKS_PER_SEC;
     printf("== OpenCL execution time ==\n");
-    printf("%f \n",gpu_time_used);
+    printf("%.2f sec.\n",gpu_time_used);
       
     /* Pārbauda, vai kamandas rinda ir izpildījusies uz atbilstošās ierīces */
     error = clFlush(command_queue);
