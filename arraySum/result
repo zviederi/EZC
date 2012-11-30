@@ -1,8 +1,10 @@
-GPU:NVIDIA GeForce 9800 GT 
+****
+
+GPU: NVIDIA GeForce 9800 GT 
 CPU: AMD Phenom(tm) II X3 705e Processor × 3 
 OS: Ubuntu 12.10 32-bit
 Platform version: OpenCL 1.1 CUDA 4.2.1
-
+====
 Result:
 Calculated: (a[i+j] *2*4.5) + (b[i+j]/a[i+j]);
 Array size: 128
@@ -71,4 +73,104 @@ Total execution time: 17.47 sec
 Simple program(noOpenCLarraySum.c)
 OpenCL execution time: 0.03 sec
 Total execution time: 16.14 sec
+====
+
+****
+
+GPU: NVIDIA Quadro NVS 140M
+	[information]
+		1.1 Platform name: NVIDIA CUDA
+		1.2 Platform Vendor: NVIDIA Corporation
+		1.3 Platform version: OpenCL 1.1 CUDA 4.2.1
+		1.4 Device: Quadro NVS 140M
+			 4.1 Hardware version: OpenCL 1.0 CUDA
+			 4.2 Device vendor id: 4318
+			 4.3 Device type: CL_DEVICE_TYPE_GPU
+			 4.4 Software version: 304.54
+			 4.5 OpenCL C version: 14
+			 4.6 Parallel compute units: 2
+			 4.7 Device max work item dimensions: 3
+			 4.8 Device max work item sizes: 512 512 64
+			 4.9 Device max work group size: 512
+			 4.10 Device max clock frequency: 800 MHz
+			 4.11 Device address bits: 32
+			 4.12 Device max mem alloc size: 128 MByte
+			 4.13 Device global mem size: 127 MByte
+			 4.14 Device error correction support no
+			 4.15 Device local memory type: tlocal
+			 4.16 Device local memory size: 16 KByte
+			 4.17 Device mac constant buffer size: 64 KByte
+	[/information]
+CPU: Intel® Core™2 Duo CPU T7500 @ 2.20GHz × 2
+OS: Ubuntu 12.10 32-bit
+Platform version: OpenCL 1.1 CUDA 4.2.1
+====
+Result:
+Calculated: (a[i+j] *2*4.5) + (b[i+j]/a[i+j]);
+Array size: 128
+====
+Program with OpenCL framework(main.c)
+OpenCL execution time:
+Total execution time:
+====
+Simple program(noOpenCLarraySum.c)
+OpenCL execution time:
+Total execution time:
+====
+
+Array size: 512
+====
+Program with OpenCL framework(main.c)
+OpenCL execution time:
+Total execution time:
+====
+Simple program(noOpenCLarraySum.c)
+OpenCL execution time:
+Total execution time:
+====
+
+Array size: 1024
+====
+Program with OpenCL framework(main.c)
+OpenCL execution time: 
+Total execution time: 
+====
+Simple program(noOpenCLarraySum.c)
+OpenCL execution time: 
+Total execution time: 
+====
+
+Result:
+Calculated: (a[i+j] * pow(sin(-M_PI),cos(M_PI))) + (pow(sin(-M_PI),cos(M_PI)) *b[i+j]);
+Array size: 128
+====
+Program with OpenCL framework(main.c)
+OpenCL execution time: 0.07 sec
+Total execution time: 0.22 sec
+====
+Simple program(noOpenCLarraySum.c)
+OpenCL execution time: 0.00 sec
+Total execution time: 0.14 sec
+====
+
+Array size: 512
+====
+Program with OpenCL framework(main.c)
+OpenCL execution time: 0.08 sec
+Total execution time: 2.27 sec
+====
+Simple program(noOpenCLarraySum.c)
+OpenCL execution time: 0.02 sec
+Total execution time: 2.00 sec
+====
+
+Array size: 1024
+====
+Program with OpenCL framework(main.c)
+OpenCL execution time: 
+Total execution time: 	
+====
+Simple program(noOpenCLarraySum.c)
+OpenCL execution time: 0.03 sec
+Total execution time: 8.14 sec
 ====

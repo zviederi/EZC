@@ -3,3 +3,4 @@ gcc -c -std=c99 main.c -o main.o
 gcc main.o -o arraySum -l OpenCL
 
 #array sum without OpenCL
+gcc noOpenCLarraySum.c -o noOpenCLarraySum

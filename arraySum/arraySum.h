@@ -337,6 +337,7 @@ int mainCL(int size_arr)
     size_t max_work_goup;
     clGetDeviceInfo(device_id, CL_DEVICE_MAX_WORK_GROUP_SIZE, sizeof(size_t), &max_work_goup, NULL);
     //printf(" Max workgroup size: %u \n", max_work_goup);
+    
     size_t local_item_size = max_work_goup;
     size_t global_item_size = roundWorkSizeUp(local_item_size, size_arr);
     //size_t global_item_size = size_arr;
