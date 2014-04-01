@@ -1,15 +1,13 @@
 EZC
 Dažas lietones, kurās tiek izmantots OpenCL.
-
 OpenCL lietotnes
 
 OPENCL IZMANTOŠANA LIETOJUMOS
-====
+
 Skaitļošanas uzdevumus ļoti labi izpilda CPU, bet ja uzdevumā ir liels elementu apstrādes skaits, tad skaitļošana var ievilkties. Izmantojot heterogēnās sistēmas ir iespējams panākt to, ka uzdevumi ar apjomīgiem apstrādes datiem tiek izpildīti paralēli un uz optimālās platformās, kas atrodas atbilstošajā darbstacijā. Jauns un industriāls izstrādes ietvars – OpenCL, adresēts tiem skaitļošanas uzdevumiem, kuros ir liels apstrādes elementu skaits. OpenCL nodrošina augstu pārnesamību, izspiežot no aparatūras maksimālo. Pētījuma mērķis ir noskaidrot OpenCL darbības principu un kādos algoritmos labāk ir pielietot. Rezultātā ir vairāki analīžu rezultāti par dažādiem skaitļošanas algoritmiem, kur jau tagad ir zināms, ka OpenCL efektivitāte parādās pie lieliem datu apjomiem, kā arī vispārēji secinājumi par OpenCL ietvaru.
 ====
 EZC
 Some applications, where use OpenCL.
-====
 OpenCL applications
 
 USE OF OPENCL IN APPLICATIONS
